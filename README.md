@@ -11,14 +11,6 @@ This project uses cmake as a build system, SDL3 as a game library, and C23 as a 
 ## Building
 
 ```bash
-mkdir build
-cd build
-
-# On Linux
-cmake ..
-make
-
-# On Windows
-# cmake ..
-# cmake --build .
+cmake -S . -B build
+cmake --build build
 ```
