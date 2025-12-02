@@ -35,7 +35,12 @@ target_sources(
 target_sources(
     imgui PUBLIC
     ${imgui_SOURCE_DIR}/backends/imgui_impl_sdl3.cpp
-    ${imgui_SOURCE_DIR}/backends/imgui_impl_sdlrenderer3.cpp
+    ${imgui_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp
 )
 
-target_link_libraries(imgui PUBLIC SDL3::SDL3)
+target_link_libraries(imgui PUBLIC SDL3::SDL3 ${OPENGL_LIBRARIES})
+
+# On macOS, explicitly link OpenGL framework
+if(APPLE)
+    target_link_libraries(imgui PUBLIC "-framework OpenGL")
+endif()
